@@ -2,8 +2,8 @@
 // Created by claim on 16-9-11.
 //
 
-#ifndef DATASTRUCTURE_NODE_H
-#define DATASTRUCTURE_NODE_H
+#ifndef DATASTRUCTURE_LINKEDLIST_H
+#define DATASTRUCTURE_LINKEDLIST_H
 
 #include "data.h"
 #include <cstdlib>
@@ -23,4 +23,4 @@ linkedList *deleteNode(linkedList *list,data target);
 
 void printList(linkedList * list);
 
-#endif //DATASTRUCTURE_NODE_H
+#endif //DATASTRUCTURE_LINKEDLIST_H
