@@ -84,7 +84,11 @@ void sqList::removeAllByValue(data value) {
 }
 
 data *sqList::getElement(int position) {
-    return &content[position];
+    if (position < length) {
+        return &content[position];
+    } else {
+        cout << "超过了顺序表容量!" << endl;
+    }
 }
 
 void sqList::addElement(data value) {
@@ -114,7 +118,7 @@ void sqList::addElement(data value) {
 
 void sqList::printList() {
     for (int i = 0; i < length; ++i) {
-        cout<<content[i]<<'\t';
+        cout << content[i] << '\t';
     }
-    cout<<endl;
+    cout << endl;
 }
