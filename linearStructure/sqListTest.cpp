@@ -17,13 +17,13 @@ int main(){
     list.addElement(2);
     list.addElement(2);
     list.addElement(6);
-    list.printList();
+    list.printList(); //#1
     list.removeAllByValue(2);
-    list.printList();
+    list.printList(); //#2
     list.addElement(5);
-    list.printList();
-    cout<<*list.getElement(3)<<endl<<list.getOutMin()<<endl;
-    list.printList();
+    list.printList(); //#3
+    cout << *list.getElement(3) << endl << list.getOutMin() << endl; //#4 #5
+    list.printList(); //#6
     list.removeAllByValue(2);
     //有序表测试
     sqList orderedList(ORDERED);
@@ -32,7 +32,7 @@ int main(){
     orderedList.addElement(3);
     orderedList.addElement(8);
     orderedList.addElement(1);
-    orderedList.printList();
+    orderedList.printList(); //#7
     orderedList.removeByInterval(2,5);
-    orderedList.printList();
+    orderedList.printList(); //#8
 }
