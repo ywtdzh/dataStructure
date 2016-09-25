@@ -17,6 +17,8 @@ typedef node linkedList;
 
 linkedList *createList(data content);
 
+linkedList *reverseList(linkedList *head);
+
 linkedList *addNode(linkedList *list, data content, data target);
 
 linkedList *deleteNode(linkedList *list,data target);

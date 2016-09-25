@@ -13,5 +13,6 @@ int main() {
     printList(list);
     deleteNode(list, 3);
     printList(list);
+    linkedList *revList = reverseList(list);
+    printList(revList);
 }
-

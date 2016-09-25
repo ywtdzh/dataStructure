@@ -3,8 +3,12 @@
 //
 
 #include <cstdio>
+#include <climits>
 #include "linkedList.h"
 
+#include <stack>
+
+using namespace std;
 linkedList *createList(data content) {
     linkedList *list = (linkedList *) malloc(sizeof(node));
     list->next = NULL;
@@ -23,7 +27,7 @@ linkedList *addNode(linkedList *list, data content, data target) {
         current->next = (node *) malloc(sizeof(node));
         current->next->content = content;
         current->next->next = tail;
-    } else {
+    } else { //current->next == NULL
         current->next = (node *) malloc(sizeof(node));
         current->next->next = NULL;
         current->next->content = content;
@@ -58,5 +62,19 @@ void printList(linkedList *list) {
         current = current->next;
     }
     putchar('\n');
-};
+}
 
+linkedList *reverseList(linkedList *currentNode) {
+    stack<data> temp;
+    while (currentNode) {
+        temp.push(currentNode->content);
+        currentNode = currentNode->next;
+    }
+    linkedList *list = createList(temp.top());
+    temp.pop();
+    while (!temp.empty()) {
+        addNode(list, temp.top(), INT_MAX);
+        temp.pop();
+    }
+    return list;
+}
