@@ -61,3 +61,10 @@ void doubleWayCycleChain::addNode(data source) {
     list->prev->next->prev = list->prev;
     list->prev = list->prev->next;
 }
+
+doubleWayCycleChain::~doubleWayCycleChain() {
+    while (list->next != list) {
+        deleteOneByValue(list->next->content);
+    }
+    free(list);
+}

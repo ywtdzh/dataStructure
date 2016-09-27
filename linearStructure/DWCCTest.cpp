@@ -20,4 +20,7 @@ int main() {
     chain.addNode(6);
     chain.deleteOneByValue(1);
     chain.printChain();
+    chain.addNode(3);
+    chain.printChain();
+
 }

@@ -23,6 +23,8 @@ public:
     void printChain();
 
     void deleteOneByValue(data value);
+
+    ~doubleWayCycleChain();
 };
 
 
