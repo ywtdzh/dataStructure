@@ -9,6 +9,7 @@
 #include <stack>
 
 using namespace std;
+
 linkedList *createList(data content) {
     linkedList *list = (linkedList *) malloc(sizeof(node));
     list->next = NULL;
