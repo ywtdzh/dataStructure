@@ -13,10 +13,10 @@ const int MAX = 20;
 
 template<typename data>
 class orderStack {
-    data stack[MAX];
+    data *stack;
     int topPosition;
 public:
-    orderStack();
+    orderStack(int size = MAX);
 
     orderStack &push(data source);
 
@@ -27,6 +27,8 @@ public:
     int size();
 
     bool empty();
+
+    ~orderStack();
 };
 
 template<typename data>
@@ -57,8 +59,9 @@ public:
 
 //Ordered stack
 template<typename data>
-orderStack<data>::orderStack() {
+orderStack<data>::orderStack(int size) {
     topPosition = -1;
+    stack = new data[size];
 }
 
 template<typename data>
@@ -103,11 +106,16 @@ data orderStack<data>::top() {
     }
 }
 
+template<typename data>
+orderStack<data>::~orderStack() {
+    delete[](stack);
+}
 
 //Linked stack
+
 template<typename data>
 linkedStack<data>::linkedStack(int) {
-    head = (node *) malloc(sizeof(node));
+    head = new node;
     head->next = nullptr;
     topPosition = head;
     dataSize = 0;
@@ -130,7 +138,7 @@ data linkedStack<data>::top() {
 
 template<typename data>
 linkedStack<data> &linkedStack<data>::push(data source) {
-    topPosition->next = (node *) malloc(sizeof(node));
+    topPosition->next = new node;
     topPosition = topPosition->next;
     topPosition->content = source;
     topPosition->next = nullptr;
@@ -149,7 +157,7 @@ linkedStack<data> &linkedStack<data>::pop(data *target) {
     while (temp->next != topPosition) {
         temp = temp->next;
     }
-    free(temp->next);
+    delete (temp->next);
     topPosition = temp;
     topPosition->next = nullptr;
     dataSize--;
@@ -161,7 +169,7 @@ linkedStack<data>::~linkedStack() {
     while (!empty()) {
         pop();
     }
-    free(head);
+    delete (head);
 }
 
 #endif //DATASTRUCTURE_STACK_H

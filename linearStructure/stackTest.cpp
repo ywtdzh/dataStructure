@@ -9,9 +9,11 @@
 using namespace std;
 
 int main() {
+
     //ordered stack test
+
     int temp;
-    orderStack<int> oStack;
+    orderStack<int> oStack(10);
     assert(oStack.empty());
     oStack.push(8);
     cout << oStack.top() << " should be 8" << endl;
@@ -21,10 +23,13 @@ int main() {
     oStack.push(7);
     oStack.push(2);
     oStack.push(5);
+    assert(oStack.size() == 3);
     cout << oStack.top() << " should be 5" << endl;
     oStack.pop(&temp);
     cout << oStack.top() << " should be 2," << temp << " should be 5" << endl;
+
     //linked stack test
+
     linkedStack<int> lStack;
     assert(lStack.empty());
     lStack.push(8);
@@ -35,6 +40,7 @@ int main() {
     lStack.push(7);
     lStack.push(2);
     lStack.push(5);
+    assert(lStack.size() == 3);
     cout << lStack.top() << " should be 5" << endl;
     lStack.pop(&temp);
     cout << lStack.top() << " should be 2," << temp << " should be 5" << endl;
