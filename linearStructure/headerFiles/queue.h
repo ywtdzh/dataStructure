@@ -7,6 +7,7 @@
 
 #include <memory>
 #include <iostream>
+#include <exception>
 
 using namespace std;
 
@@ -140,7 +141,7 @@ template<typename D>
 const D linkedQueue<D>::deQueue () {
     if (!head) {
         cout << "队列中无元素" << endl;
-        return INT32_MIN;
+        throw exception();
     }
     D result = head->data;
     head = head->nextNode;
@@ -154,7 +155,7 @@ template<typename D>
 const D &linkedQueue<D>::peek () {
     if (!head) {
         cout << "队列中无元素" << endl;
-        return INT32_MIN;
+        throw exception();
     }
     return head->data;
 }
@@ -277,7 +278,7 @@ const D orderedQueue<D>::deQueue () {
         return result;
     } else {
         cout << "Failure to dequeue : The queue is empty\n";
-        return INT32_MIN;
+        throw exception();
     }
 }
 
@@ -287,7 +288,7 @@ const D orderedQueue<D>::peek () const {
         return queue[head];
     } else {
         cout << "Failure to peek : The queue is empty\n";
-        return INT32_MIN;
+        throw exception();
     }
 }
 

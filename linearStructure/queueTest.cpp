@@ -37,7 +37,11 @@ int main (int argc, char **argv) {
     {
         orderedQueue<int> Q(5);
         assert(Q.getLength() == 0);
-        assert(Q.peek() == INT32_MIN); //Should fail
+        try {
+            Q.peek();
+        } catch (exception e) {
+            cout << e.what() << endl;
+        }
         Q.enQueue(8).enQueue(4);
         Q.enQueue(7);
         Q.enQueue(1);
