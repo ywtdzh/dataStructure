@@ -14,6 +14,7 @@ int main (int argc, char **argv) {
     Q.enQueue(3);
     Q.enQueue(2);
     Q.enQueue(5);
+    assert(Q.getLength() == 4);
     cout << Q;
     assert(Q.deQueue() == 9);
     assert(Q.peek() == 3);

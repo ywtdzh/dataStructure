@@ -57,6 +57,8 @@ public:
 
     const D &peek ();
 
+    const int getLength ();
+
     friend ostream &operator<<<D> (ostream &out, const linkedQueue<D>::node &source);
 
     friend ostream &operator<<<D> (ostream &out, const linkedQueue<D> &source);
@@ -155,6 +157,17 @@ const D &linkedQueue<D>::peek () {
         return INT32_MIN;
     }
     return head->data;
+}
+
+template<typename D>
+const int linkedQueue<D>::getLength () {
+    int length = 0;
+    auto temp = head;
+    while (temp) {
+        length++;
+        temp = temp->nextNode;
+    }
+    return length;
 }
 
 template<typename D>
