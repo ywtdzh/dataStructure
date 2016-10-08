@@ -181,4 +181,138 @@ ostream &operator<< (ostream &out, const linkedQueue<D> &source) {
     return out;
 }
 
+//Ordered Queue
+template<typename D>
+class orderedQueue;
+
+template<typename D>
+ostream &operator<< (ostream &out, const orderedQueue<D> &queue);
+
+template<typename D>
+class orderedQueue {
+    const int limit;
+    D *queue;
+    int head, tail;
+public:
+    orderedQueue (const int limit = 21);
+
+    orderedQueue (const orderedQueue<D> &);
+
+    void init (const orderedQueue<D> &source);
+
+    const int getLength () const;
+
+    const orderedQueue<D> &operator= (const orderedQueue<D> &);
+
+    orderedQueue<D> &enQueue (const D data);
+
+    const D deQueue ();
+
+    const D peek () const;
+
+    friend ostream &operator<<<> (ostream &out, const orderedQueue<D> &);
+
+    ~orderedQueue ();
+};
+
+template<typename D>
+orderedQueue<D>::orderedQueue (const int limit) : limit(limit > 1 ? limit + 1 : 1), head(0), tail(0) {
+    queue = new int[limit];
+}
+
+template<typename D>
+void orderedQueue<D>::init (const orderedQueue<D> &source) {
+    limit = source.limit;
+    queue = new int[limit];
+    head = 0;
+    tail = source.getLength();
+    for (int i = 0; i < tail; ++i) {
+        int position = head + i >= limit ?
+                       head + i - limit :
+                       head + i;
+        queue[i] = source.queue[position];
+    }
+}
+
+template<typename D>
+orderedQueue<D>::orderedQueue (const orderedQueue<D> &source) {
+    init();
+}
+
+template<typename D>
+const orderedQueue<D> &orderedQueue<D>::operator= (const orderedQueue<D> &) {
+    init();
+    return *this;
+}
+
+template<typename D>
+const int orderedQueue<D>::getLength () const {
+    return head > tail ?
+           tail + limit - head :
+           tail - head;
+}
+
+template<typename D>
+orderedQueue<D> &orderedQueue<D>::enQueue (const D data) {
+    if (tail + 1 != head && tail + 1 - limit != head) {
+        queue[tail] = data;
+        tail++;
+        if (tail >= limit) {
+            tail -= limit;
+        }
+    } else {
+        cout << "Failure to enqueue : The queue has been full\n";
+    }
+    return *this;
+}
+
+template<typename D>
+const D orderedQueue<D>::deQueue () {
+    if (head != tail) {
+        D result = queue[head];
+        head++;
+        if (head >= limit) {
+            head -= limit;
+        }
+        return result;
+    } else {
+        cout << "Failure to dequeue : The queue is empty\n";
+        return INT32_MIN;
+    }
+}
+
+template<typename D>
+const D orderedQueue<D>::peek () const {
+    if (head != tail) {
+        return queue[head];
+    } else {
+        cout << "Failure to peek : The queue is empty\n";
+        return INT32_MIN;
+    }
+}
+
+template<typename D>
+ostream &operator<< (ostream &out, const orderedQueue<D> &queue) {
+    const int length = queue.getLength();
+    if (queue.head < queue.tail) {
+        for (int i = 0; i < length; ++i) {
+            out << queue.queue[queue.head + i];
+        }
+    } else {
+        for (int i = 0; i < length; ++i) {
+            int position = queue.head + i >= queue.limit ?
+                           queue.head + i - queue.limit :
+                           queue.head + i;
+            out << queue.queue[position] << '\t';
+        }
+    }
+    out << endl;
+    return out;
+}
+
+template<typename D>
+orderedQueue<D>::~orderedQueue () {
+    delete[] queue;
+}
+
 #endif //DATASTRUCTURE_QUEUE_H
