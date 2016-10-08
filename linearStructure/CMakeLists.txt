@@ -4,3 +4,4 @@ add_executable(linearList linearList.cpp linearListTest.cpp) #指定要生成的
 add_executable(stack stackTest.cpp)
 add_executable(sqList sqList.cpp sqListTest.cpp)
 add_executable(doubleWayCycleChain DWCCTest.cpp doubleWayCycleChain.cpp)
+add_executable(queue queueTest.cpp)
