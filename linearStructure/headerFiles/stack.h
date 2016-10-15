@@ -10,7 +10,9 @@ const int MAX = 20;
 
 #include <cstdio>
 #include <cstdlib>
+#include <exception>
 
+using namespace std;
 template<typename data>
 class orderStack {
     data *stack;
@@ -152,7 +154,7 @@ linkedStack<data> &linkedStack<data>::pop(data *target) {
     node *temp = head;
     if (!head->next) {
         printf("The Stack is Empty\n");
-        return *this;
+        throw exception();
     }
     while (temp->next != topPosition) {
         temp = temp->next;
