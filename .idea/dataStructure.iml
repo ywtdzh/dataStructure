@@ -7,19 +7,20 @@
       <sourceFolder url="file://$MODULE_DIR$/treeStructure/CMakeLists.txt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/treeStructure/binarySearchTreeTest.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/linearStructure/CMakeLists.txt" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/linearStructure/DWCCTest.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/linearStructure/queueTest.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/linearStructure/sqList.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/linearStructure/CMakeLists.txt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/linearStructure/linearList.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/linearStructure/sqList.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/linearStructure/exercise/calculator.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/linearStructure/exercise/bracketCheck.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/linearStructure/exercise/calculator.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/linearStructure/exercise/CMakeLists.txt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/linearStructure/exercise/calculatorTest.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/linearStructure/linearListTest.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/linearStructure/stackTest.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/linearStructure/doubleWayCycleChain.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/linearStructure/DWCCTest.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/linearStructure/linearListTest.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/linearStructure/sqListTest.cpp" isTestSource="false" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
