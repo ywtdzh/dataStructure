@@ -13,11 +13,15 @@
       <sourceFolder url="file://$MODULE_DIR$/linearStructure/CMakeLists.txt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/linearStructure/linearList.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/linearStructure/sqList.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/linearStructure/exercise/queueMerge.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/linearStructure/exercise/CMakeLists.txt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/linearStructure/exercise/bracketCheck.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/linearStructure/exercise/calculator.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/linearStructure/exercise/calculatorTest.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/linearStructure/exercise/calculator.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/linearStructure/exercise/bankCallingSystem/caller.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/linearStructure/exercise/bankCallingSystem/callTest.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/linearStructure/exercise/bankCallingSystem/caller.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/linearStructure/exercise/systemConvert.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/linearStructure/stackTest.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/linearStructure/doubleWayCycleChain.cpp" isTestSource="false" />

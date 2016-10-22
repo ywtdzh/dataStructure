@@ -101,9 +101,9 @@ linkedQueue<D>::linkedQueue ():head(nullptr), tail(nullptr) {}
 template<typename D>
 void linkedQueue<D>::init (const linkedQueue<D> &source) {
     if (source.head) {
-        head = make_shared<node>(*source.head); //Call constructor for node<D>
+        head = make_shared<node>(*source.head); //Call copy constructor for node<D>
         auto temp = head;
-        while (temp->nextNode) {
+        while (temp->nextNode) { //Set tail
             temp = temp->nextNode;
         }
         tail = temp;
@@ -194,12 +194,12 @@ class orderedQueue {
     const int limit;
     D *queue;
     int head, tail;
+
+    void init (const orderedQueue<D> &source);
 public:
     orderedQueue (const int limit = 21);
 
     orderedQueue (const orderedQueue<D> &);
-
-    void init (const orderedQueue<D> &source);
 
     const int getLength () const;
 
@@ -217,7 +217,7 @@ public:
 };
 
 template<typename D>
-orderedQueue<D>::orderedQueue (const int limit) : limit(limit > 1 ? limit + 1 : 1), head(0), tail(0) {
+orderedQueue<D>::orderedQueue (const int limit) : limit(limit > 0 ? limit + 1 : 1), head(0), tail(0) {
     queue = new int[limit];
 }
 
