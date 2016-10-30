@@ -26,4 +26,5 @@ int main () {
     assert(matchL("asd", "aa") == -1);
     assert(matchL("asd", "sd") == 1);
     assert(matchL("asd", "as") == 0);
+    assert(matchL("asdas", "as") == 3);
 }
