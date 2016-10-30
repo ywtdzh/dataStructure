@@ -3,7 +3,6 @@
 //
 #include <KMPAlgorithm.h>
 #include <cassert>
-#include <iostream>
 
 int main () {
     KMPPattern pattern("cococola");
