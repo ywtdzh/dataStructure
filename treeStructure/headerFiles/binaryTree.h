@@ -81,6 +81,8 @@ public:
 
     const void inOrderTraversal () const;
 
+    const void postOrderTraversal () const;
+
     static binaryTree<D> *generateTreeByPreIn (vector<D> preOrder, vector<D> inOrder, binaryTree *parent = nullptr);
 
     static binaryTree<D> *generateTreeByInPost (vector<D> inOrder, vector<D> postOrder, binaryTree *parent = nullptr);
@@ -96,8 +98,7 @@ inline const int max (int a, int b) {
 }
 
 template<typename D>
-binaryTree<D> *
-binaryTree<D>::generateTreeByPreIn (vector<D> preOrder, vector<D> inOrder, binaryTree *parent) {
+binaryTree<D> *binaryTree<D>::generateTreeByPreIn (vector<D> preOrder, vector<D> inOrder, binaryTree *parent) {
     if (!preOrder.empty()) {
         binaryTree<D> *rootTree = new binaryTree<D>(parent);
         rootTree->data = preOrder[0];
@@ -131,8 +132,7 @@ binaryTree<D>::generateTreeByPreIn (vector<D> preOrder, vector<D> inOrder, binar
 }
 
 template<typename D>
-binaryTree<D> *
-binaryTree<D>::generateTreeByInPost (vector<D> inOrder, vector<D> postOrder, binaryTree *parent) {
+binaryTree<D> *binaryTree<D>::generateTreeByInPost (vector<D> inOrder, vector<D> postOrder, binaryTree *parent) {
     if (!inOrder.empty()) {
         binaryTree<D> *rootTree = new binaryTree<D>(parent);
         rootTree->data = postOrder[postOrder.size() - 1];
@@ -167,8 +167,8 @@ binaryTree<D>::generateTreeByInPost (vector<D> inOrder, vector<D> postOrder, bin
 
 template<typename D>
 const void binaryTree<D>::preOrderTraversal () const {
-    auto current = const_cast<binaryTree<D> *>(this);
-    stack<binaryTree<D> *> nodes;
+    auto current = this;
+    stack<const binaryTree<D> *> nodes;
     while (current || !nodes.empty()) {
         if (current) {
             cout << current->data << '\t';
@@ -184,8 +184,8 @@ const void binaryTree<D>::preOrderTraversal () const {
 
 template<typename D>
 const void binaryTree<D>::inOrderTraversal () const {
-    auto current = const_cast<binaryTree<D> *>(this);
-    stack<binaryTree<D> *> nodes;
+    auto current = this;
+    stack<const binaryTree<D> *> nodes;
     while (current || !nodes.empty()) {
         if (current) {
             nodes.push(current);
@@ -195,6 +195,60 @@ const void binaryTree<D>::inOrderTraversal () const {
             nodes.pop();
             cout << current->data << '\t';
             current = current->rightTree;
+        }
+    }
+    putchar('\n');
+}
+
+//template<typename D>
+//const void binaryTree<D>::postOrderTraversal () const {
+//    auto current = this;
+//    decltype(current) prev = nullptr;
+//    stack<const binaryTree<D> *> nodes;
+//    while (current || !nodes.empty()) {
+//        if (current) {
+//            nodes.push(current);
+//            current = current->leftTree;
+//        } else {
+//            current = nodes.top();
+//            if (prev == current->rightTree) {
+//                nodes.pop();
+//                prev = current;
+//                cout << current->data << '\t';
+//                current = nullptr;
+//            } else {
+//                if (current->rightTree) {
+//                    current = current->rightTree;
+//                } else {
+//                    nodes.pop();
+//                    prev = current;
+//                    cout << current->data << '\t';
+//                    current = nullptr;
+//                }
+//            }
+//        }
+//    }
+//    putchar('\n');
+//}
+
+template<typename D>
+const void binaryTree<D>::postOrderTraversal () const {
+    auto current = this;
+    stack<const binaryTree<D> *> nodes;
+    while (current || !nodes.empty()) {
+        if (current) {
+            nodes.push(current);
+            nodes.push(current);
+            current = current->leftTree;
+        } else {
+            current = nodes.top();
+            nodes.pop();
+            if (!nodes.empty() && current == nodes.top()) {
+                current = current->rightTree;
+            } else {
+                cout << current->data << '\t';
+                current = nullptr;
+            }
         }
     }
     putchar('\n');

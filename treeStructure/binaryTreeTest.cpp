@@ -46,6 +46,7 @@ int main () {
     putchar('\n');
     tree->preOrderTraversal();
     tree->inOrderTraversal();
+    tree->postOrderTraversal();
     recycleBinaryTree(tree);
     tree = binaryTree<int>::generateTreeByInPost(
             vector<int>(in, in + 10),
@@ -54,6 +55,7 @@ int main () {
     putchar('\n');
     tree->preOrderTraversal();
     tree->inOrderTraversal();
+    tree->postOrderTraversal();
     recycleBinaryTree(tree);
     return 0;
 }
