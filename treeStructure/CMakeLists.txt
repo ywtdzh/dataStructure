@@ -1,3 +1,4 @@
 include_directories(headerFiles)
 add_executable(binarySearchTreeTest binarySearchTreeTest.cpp)
 add_executable(binaryTreeTest binaryTreeTest.cpp)
+add_executable(binaryHeap binaryHeapTest.cpp)
