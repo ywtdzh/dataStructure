@@ -15,49 +15,60 @@ template<typename D>
 class AVLTree {
     struct AVLNode {
         D data;
-        shared_ptr<AVLNode> leftNode;
-        shared_ptr<AVLNode> rightNode;
+        AVLNode *leftNode;
+        AVLNode *rightNode;
 
         AVLNode (const D &data) : data(data) { leftNode = rightNode = nullptr; }
 
-        shared_ptr<AVLNode> LRotate () {
+        static void recycleHandler (AVLNode *node) {
+            if (node->leftNode) {
+                recycleHandler(node->leftNode);
+            }
+            if (node->rightNode) {
+                recycleHandler(node->rightNode);
+            }
+            delete node;
+
+        }
+
+        AVLNode *LRotate () {
             auto root = rightNode;
             rightNode = root->leftNode;
-            root->leftNode = (shared_ptr<AVLNode>) const_cast<AVLNode *>(this);
+            root->leftNode = const_cast<AVLNode *>(this);
             return root;
         }
 
-        shared_ptr<AVLNode> RRotate () {
+        AVLNode *RRotate () {
             auto root = leftNode;
             leftNode = root->rightNode;
-            root->rightNode = (shared_ptr<AVLNode>) const_cast<AVLNode *>(this);
+            root->rightNode = const_cast<AVLNode *>(this);
             return root;
         }
 
-        shared_ptr<AVLNode> LRRotate () {
+        AVLNode *LRRotate () {
             auto root = leftNode->rightNode;
             auto lChild = root->leftNode, rChild = root->rightNode;
             root->leftNode = leftNode;
-            root->rightNode = (shared_ptr<AVLNode>) const_cast<AVLNode *>(this);
+            root->rightNode = const_cast<AVLNode *>(this);
             root->leftNode->rightNode = lChild;
             root->rightNode->leftNode = rChild;
             return root;
         }
 
-        shared_ptr<AVLNode> RLRotate () {
+        AVLNode *RLRotate () {
             auto root = rightNode->leftNode;
             auto lChild = root->leftNode, rChild = root->rightNode;
             root->rightNode = rightNode;
-            root->leftNode = (shared_ptr<AVLNode>) const_cast<AVLNode *>(this);
+            root->leftNode = const_cast<AVLNode *>(this);
             root->leftNode->rightNode = lChild;
             root->rightNode->leftNode = rChild;
             return root;
         }
     };
 
-    shared_ptr<AVLNode> root;
+    AVLNode *root;
 
-    static int getHeight (shared_ptr<AVLNode> target) {
+    static int getHeight (AVLNode *target) {
         if (target == 0)
             return 0;
         int leftHeight = getHeight(target->leftNode);
@@ -75,7 +86,14 @@ public:
     int removeElement (const D &data);
 
     void printElements ();
+
+    ~AVLTree ();
 };
+
+template<typename D>
+AVLTree<D>::~AVLTree () {
+    AVLNode::recycleHandler(root);
+}
 
 template<typename D>
 int AVLTree<D>::findElement (const D &data) {
@@ -94,7 +112,7 @@ int AVLTree<D>::findElement (const D &data) {
 template<typename D>
 void AVLTree<D>::printElements () {
     auto current = root;
-    stack<shared_ptr<AVLNode>> routes;
+    stack<AVLNode *> routes;
     while (current || !routes.empty()) {
         if (!current) {
             current = routes.top();
@@ -113,11 +131,11 @@ void AVLTree<D>::printElements () {
 template<typename D>
 int AVLTree<D>::addElement (const D &data) {
     if (!root) {
-        root = shared_ptr<AVLNode>(new AVLNode(data));
+        root = new AVLNode(data);
         return 1;
     }
     auto current = root;
-    stack<shared_ptr<AVLNode>> routes;
+    stack<AVLNode *> routes;
     while (current != nullptr) {
         if (data < current->data) {
             routes.push(current);
@@ -129,9 +147,9 @@ int AVLTree<D>::addElement (const D &data) {
             return 0;
         }
     }
-    shared_ptr<AVLNode> father = nullptr;
-    shared_ptr<AVLNode> grandFather = nullptr;
-    shared_ptr<AVLNode> greatGrandFather = nullptr;
+    AVLNode *father = nullptr;
+    AVLNode *grandFather = nullptr;
+    AVLNode *greatGrandFather = nullptr;
     if (!routes.empty()) {
         father = routes.top();
         routes.pop();
@@ -145,10 +163,10 @@ int AVLTree<D>::addElement (const D &data) {
         routes.pop();
     }
     if (data > father->data) {
-        current = shared_ptr<AVLNode>(new AVLNode(data));
+        current = new AVLNode(data);
         father->rightNode = current;
     } else {
-        current = shared_ptr<AVLNode>(new AVLNode(data));
+        current = new AVLNode(data);
         father->leftNode = current;
     }
     //Add complete
@@ -222,10 +240,10 @@ template<typename D>
 int AVLTree<D>::removeElement (const D &data) {
     if (!root)
         return 0;
-    shared_ptr<AVLNode> current = root;
-    shared_ptr<AVLNode> father = nullptr;
-    shared_ptr<AVLNode> grandFather = nullptr;
-    stack<shared_ptr<AVLNode>> routes;
+    AVLNode *current = root;
+    AVLNode *father = nullptr;
+    AVLNode *grandFather = nullptr;
+    stack<AVLNode *> routes;
     while (current) {
         if (data > current->data) {
             father = current;
