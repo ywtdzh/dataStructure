@@ -1,1 +1,2 @@
 include_directories(headerFiles)
+add_executable(BasicGraph basicgraph.cpp)
