@@ -94,6 +94,7 @@ typename BasicGraph<D>::treeNode *BasicGraph<D>::KruskalGenerateTree () {
                 edges.push_back(current);
             }
         }
+        ///////////////////////////////////////////////
         set<node> temp;
         temp.insert(nodes[i]);
         connected.push_back(temp);
