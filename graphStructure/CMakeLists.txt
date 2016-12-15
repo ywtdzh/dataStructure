@@ -1,2 +1,3 @@
 include_directories(headerFiles)
 add_executable(BasicGraph basicgraph.cpp)
+add_executable(MatrixGraph matrixGraphTest.cpp)

@@ -142,7 +142,6 @@ typename BasicGraph<D>::treeNode *BasicGraph<D>::KruskalGenerateTree () {
     treeNode *root = new treeNode(effective[0]->first);
     root->children.push_back(new treeNode(effective[0]->second));
     effective.erase(effective.begin());
-    bool added = false;
     while (!effective.empty()) {
         queue<treeNode *> routes;
         routes.push(root);
