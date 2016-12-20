@@ -79,11 +79,11 @@ bool checker::check () {
         temp = 0;
     }
     if (container.empty()) {
-        cout << "Check Passed\n";
+        cout << "findAlgorithm Passed\n";
         container.push('#');
         return true;
     } else {
-        cout << "Check Failed\n";
+        cout << "findAlgorithm Failed\n";
         while (!container.empty()) {
             container.pop();
         }

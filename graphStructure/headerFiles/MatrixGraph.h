@@ -189,7 +189,7 @@ vector<int> MatrixGraph<D>::getLoopHandler () {
         result.clear();
         base++;
         if (base > loopElement.size())
-            return vector<int>();
+            return result;
     }
 }
 

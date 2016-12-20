@@ -6,3 +6,4 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -static") #编译选项,包�
 add_subdirectory(linearStructure) #到指定位置寻找CMakeLists.txt
 add_subdirectory(treeStructure)
 add_subdirectory(graphStructure)
+add_subdirectory(findAlgorithm)
