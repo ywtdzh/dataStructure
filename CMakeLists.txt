@@ -7,3 +7,4 @@ add_subdirectory(linearStructure) #到指定位置寻找CMakeLists.txt
 add_subdirectory(treeStructure)
 add_subdirectory(graphStructure)
 add_subdirectory(findAlgorithm)
+add_subdirectory(sortAlgorithm)

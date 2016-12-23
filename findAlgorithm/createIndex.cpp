@@ -28,7 +28,6 @@ vector<K_V<D, int>> createIndex (vector<D> source) {
         }
         for (auto iter = result.begin() + 1; iter < result.end() - 1; iter++) {
             if (source[i] >= iter->key && source[i] <= (iter + 1)->key) {
-                int distance = iter - result.begin();
                 result.insert(iter + 1, K_V<D, int>(source[i], i));
                 break;
             }
