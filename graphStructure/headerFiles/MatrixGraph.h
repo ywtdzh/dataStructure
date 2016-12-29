@@ -105,8 +105,8 @@ vector<vector<double>> MatrixGraph<D>::getFloydMatrix () {
     for (int k = 0; k < nodes.size(); ++k) {
         for (int i = 0; i < nodes.size(); ++i) {
             for (int j = 0; j < nodes.size(); ++j) {
-                if (result[i][j] > result[i][k] + result[k][j] ||
-                    result[i][j] == INFINITY && result[i][k] != INFINITY && result[k][j] != INFINITY) {
+                if (result[i][j] > result[i][k] + result[k][j] && result[i][k] != INFINITY &&
+                    result[k][j] != INFINITY) {
                     path[i][j] = k;
                     result[i][j] = result[i][k] + result[k][j];
                 }
